@@ -42,8 +42,8 @@
       <div class="form-group">
         <label for="gender">Genero</label>
         <select class="form-control" id="gender" name="gender" [(ngModel)]="user.gender" required>
-            <option value=""></option>
-          <option  *ngFor="let generos of generos " value="generos.idgenero">{{generos.descripciongenero}}</option>
+            <!-- <option value=""></option> -->
+          <option  *ngFor="let generos of generos " [value]="generos.idgenero">{{generos.descripciongenero}}</option>
         </select>
       </div>
   

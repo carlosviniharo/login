@@ -20,4 +20,9 @@ export class UsersService {
       map((resp: any) => resp)
     );
   }
+  get_idtipopersonas():Observable<any> {
+    return this.http.get(environment.apiUrl + 'users/tipopersonas').pipe(
+      map((resp: any) => resp)
+    );
+  }
 }
