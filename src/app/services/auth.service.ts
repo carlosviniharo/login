@@ -21,8 +21,6 @@ login(email: string, password: string): Observable<any> {
   return this.http.post(environment.apiUrl + 'users/login/', { email: email, password: password })
     .pipe(
       tap((resp: any) => {
-        //console.log(resp);
-        this.router.navigate(['profile']);
         localStorage.setItem('auth_token', resp.token);
       }),
       catchError((error) => {

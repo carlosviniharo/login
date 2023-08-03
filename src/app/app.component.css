@@ -1,0 +1,54 @@
+/* bank-account.component.css */
+
+/* Reset some default styles for consistency */
+body, h1, h2, h3, p, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+header {
+  background-color: #4267B2; /* Facebook blue */
+  padding: 10px;
+  color: #fff;
+}
+
+nav {
+  text-align: center;
+}
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+.nav-link:hover {
+  background-color: #fff;
+  color: #4267B2; /* Facebook blue */
+}
+
+.content {
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+

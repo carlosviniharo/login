@@ -1,14 +1,17 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <ul>
-    <li><a class="nav-link" routerLink="/" routerLinkActive="active">Home</a>  </li>
-    <li><a class="nav-link" routerLink="profile" routerLinkActive="active" *ngIf="authService.logIn">Profile</a>  </li>
-    <li style="float:right" > <a class="nav-link"  style="float:right" routerLink="login" routerLinkActive="active" *ngIf="!authService.logIn">Login</a> </li>
-    <li style="float:right" > <a class ="nav-link" (click)="logout()" href="#" *ngIf="authService.logIn">Logout</a> </li>
-  </ul>
-  <div class="text-center">
-    <p>
-      Angular 6 Authentication with JWT Tutorial
-    </p>
-  </div>
+<header>
+  <nav>
+    <ul class="nav-list">
+      <li><a class="nav-link" routerLink="/" routerLinkActive="active">Home</a></li>
+      <li *ngIf="authService.logIn"><a class="nav-link" routerLink="profile" routerLinkActive="active">Profile</a></li>
+      <li *ngIf="usersServices"><a class="nav-link" routerLink="register" routerLinkActive="active">Register</a></li>
+      <li *ngIf="!authService.logIn"><a class="nav-link" routerLink="login" routerLinkActive="active">Login</a></li>
+      <li *ngIf="authService.logIn"><a class="nav-link" (click)="logout()" href="#">Logout</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="content">
+  <!-- Your page content goes here -->
   <router-outlet></router-outlet>
+</div>

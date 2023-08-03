@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
+import { UsersService } from './services/users.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,7 +8,7 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent {
   title = 'login';
-  constructor (public authService: AuthService) { }
+  constructor (public authService: AuthService, public usersServices: UsersService) { }
   logout() {
     this.authService.logout();
   }
