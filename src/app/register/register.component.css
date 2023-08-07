@@ -1,98 +1,99 @@
 /* Global styles */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background-color: #f0f2f5;
-  }
-  
-  .container {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #7d56a8; /* Soft purple color */
-  }
-  
-  form {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  
-  .form-group {
-    width: 48%;
-    margin-bottom: 15px;
-  }
-  
-  label {
-    display: block;
-    font-weight: bold;
-    color: #333; /* Neutral text color */
-    margin-bottom: 5px;
-  }
-  
-  input[type="text"],
-  input[type="email"],
-  input[type="password"],
-  select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc; /* Neutral border color */
-    border-radius: 4px;
-    background-color: #f9f9f9;
-    color: #333; /* Neutral text color */
-  }
-  
-  select {
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='%23333'%3E%3Cpath d='M4 5l4 4 4-4z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 8px 8px;
-    padding-right: 25px;
-  }
-  
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #f0f2f5;
+}
+
+.container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #7048e8; /* Soft purple color */
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.form-group {
+  width: 48%;
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  color: #333; /* Neutral text color */
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc; /* Neutral border color */
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  color: #333; /* Neutral text color */
+}
+
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='%23333'%3E%3Cpath d='M4 5l4 4 4-4z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 8px 8px;
+  padding-right: 25px;
+}
+
 /* Buttons */
 .btn-group {
   display: flex;
-  justify-content: center ;
+  justify-content: space-around;
   margin-top: 20px;
 }
 
+.button-update,
 button {
-  display: flex;
   padding: 10px 20px;
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
 }
 
+/* Primary button with color #7048e8 (Soft purple) */
 .btn-primary {
-  background-color: #7d56a8; /* Soft purple color */
+  background-color: #7048e8;
   color: #fff;
 }
 
+/* Secondary button with a complementary color #8258a1 (A darker purple) */
 .btn-secondary {
-  background-color: #8258a1; /* Slightly darker shade of the soft purple color */
+  background-color: #7048e8;
   color: #fff;
 }
 
+/* Danger button with a complementary color #8e609a (A deep violet) */
 .btn-danger {
-  background-color: #8e609a; /* Another shade of the soft purple color */
+  background-color: #7048e8;
   color: #fff;
 }
-  
-  /* Media query for small screens */
-  @media (max-width: 480px) {
-    .form-group {
-      width: 100%;
-    }
-  }
-  
+
+/* Optional: Hover effect for buttons */
+.button-update:hover,
+button:hover {
+  background-color: #5d3bb3; /* A darker shade of the primary color */
+}

@@ -1,67 +1,72 @@
-/* Styling for the login form */
-h3 {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  div {
-    max-width: 300px;
-    margin: 0 auto;
-    background-color: #f2f2f2;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  div .spacer {
-    margin-bottom: 15px;
-  }
-  
-  label {
-    display: block;
-    font-size: 14px;
-    color: #555;
-  }
-  
-  input[type="text"],
-  input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  button {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Optional: Add some extra styles to enhance the form */
-  div {
-    margin-top: 30px;
-    box-sizing: border-box;
-  }
-  
-  body {
-    background-color: #f7f7f7;
-    font-family: Arial, sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-  }
+/* Bank-login Styles */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
+}
+
+.bank-login-container {
+  width: 350px;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+}
+
+.bank-login-container h3 {
+  text-align: center;
+  color: #7048e8; /* Violet/Purple color with a similar tone as the blue */
+  margin-bottom: 20px;
+}
+
+.spacer {
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: bold;
+  color: #333333;
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  color: #333333;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border-color: #7048e8; /* Violet/Purple color with a similar tone as the blue */
+  box-shadow: 0 0 5px #7048e8; /* Violet/Purple color with a similar tone as the blue */
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #7048e8; /* Violet/Purple color with a similar tone as the blue */
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #4b32b3; /* A darker shade of the Violet/Purple color */
+}
+
+button[type="submit"]:focus {
+  outline: none;
+  box-shadow: 0 0 5px #4b32b3; /* A darker shade of the Violet/Purple color */
+}

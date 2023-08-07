@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { environment } from 'src/enviroments/enviroment';
@@ -44,15 +44,21 @@ export class UsersService {
     );
   }
 
+  get_sucursalesdepartamentos(idsucursal: number):Observable<any>{
+    const params = new HttpParams().set('idsucursal', String(idsucursal))
+    return this.http.get(environment.apiUrl + 'users/sucursaldepartamentos/', { params }).pipe(
+      map((resp: any) => resp)
+    );
+  }
+
   get_tipopersonas():Observable<any> {
-    return this.http.get(environment.apiUrl + 'users/tipopersonas/').pipe(
+    return this.http.get(environment.apiUrl + 'users/tipospersonas/').pipe(
       map((resp: any) => resp)
     );
   }
   get_tipoidentificaciones():Observable<any> {
-    return this.http.get(environment.apiUrl + 'users/tipoidentificaciones/').pipe(
+    return this.http.get(environment.apiUrl + 'users/tiposidentificaciones/').pipe(
       map((resp:any) => resp)
     );
   }
-
 }

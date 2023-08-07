@@ -11,27 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
 })
-/* export class RegisterComponent implements OnInit {
-  user = {
-    idrol: '',
-    idtipoidentificacion: '',
-    identificationNumber: '',
-    firstName: '',
-    lastName: '',
-    gender: '',
-    address: '',
-    phoneNumber: '',
-    branch: '',
-    department: '',
-    position: '',
-    email: '',
-    password: '',
-  };
 
-  generos: any = [];
-  tipopersonas: any = [];
-  tipoidentificaciones: any = [];
-  constructor(private router: Router, private userService: UsersService) {} */
 export class RegisterComponent {
   user: any = {}; // Define the 'user' object to store the form data
   registerForm: FormGroup;
@@ -70,16 +50,12 @@ export class RegisterComponent {
     this.get_departamentos();
     this.get_roles();
     this.get_cargos();
+    this.get_sucursalesdepartamentos(1);
   }
 
   onSubmit() {
     if (this.registerForm.valid) {
 
-
-      
-      this.registerForm.controls['idrol']
-      .setValue(parseInt(this.registerForm.controls['idrol'].value));
-      
       
       this.user = this.registerForm.value;
 
@@ -88,6 +64,7 @@ export class RegisterComponent {
 
       // Convert the user object to a JSON string
       const jsonData = JSON.stringify(this.user);
+      this.userService.create_user(jsonData);
       console.log(jsonData);
 
 
@@ -110,6 +87,11 @@ export class RegisterComponent {
       });
     }
   }
+
+  cancelar() {
+    this.registerForm.reset();
+    this.router.navigate(['profile']);
+     }
 
   async get_cargos() {
     // TODO: In case you find error in  dealys from the servers implement promises
@@ -143,6 +125,18 @@ export class RegisterComponent {
       console.log('Data received:', this.myDictionaryStaticTables['departamentos']);
     } catch (error) {
       // Handle any errors that might occur during the server request
+      console.error('Error fetching data:', error);
+    }
+  }
+
+  async get_sucursalesdepartamentos(idsucursal: number) {
+    try {
+      const resp =await firstValueFrom(
+        this.userService.get_sucursalesdepartamentos(idsucursal));
+
+        this.myDictionaryStaticTables['sucursalesdepartamentos'] = resp;
+        console.log('Data received:', this.myDictionaryStaticTables['sucursalesdepartamentos']);
+    } catch (error) {
       console.error('Error fetching data:', error);
     }
   }
@@ -229,23 +223,4 @@ export class RegisterComponent {
     
   }
 
-  cancelar() {
- /*    this.user = {
-      idrol: '',
-      idtipoidentificacion: '',
-      identificationNumber: '',
-      firstName: '',
-      lastName: '',
-      gender: '',
-      address: '',
-      phoneNumber: '',
-      branch: '',
-      department: '',
-      position: '',
-      email: '',
-      password: '',
-    }; */
-
-    this.router.navigate(['profile']);
-  }
 }
