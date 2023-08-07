@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { environment } from 'src/enviroments/enviroment';
@@ -9,10 +9,12 @@ import { environment } from 'src/enviroments/enviroment';
 export class UsersService {
   constructor(private http: HttpClient) {}
 
-  create_user(user: any) {
-    return this.http.post(environment.apiUrl + 'users/user_register/', user).pipe(
-      map((resp: any) => resp)
-    );
+  create_user(user: any): Observable<any> {
+    const url = environment.apiUrl + 'users/user_register/';
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.post(url, user, { headers});
   }
 
   get_cargos():Observable<any> {
@@ -59,6 +61,12 @@ export class UsersService {
   get_tipoidentificaciones():Observable<any> {
     return this.http.get(environment.apiUrl + 'users/tiposidentificaciones/').pipe(
       map((resp:any) => resp)
+    );
+  }
+  get_usuario(email: string):Observable<any> {
+    const url = `${environment.apiUrl}users/user_profile/${encodeURIComponent(email)}/`;
+    return this.http.get(url).pipe(
+      map((resp:any)=> resp)
     );
   }
 }

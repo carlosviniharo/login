@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { UsersService } from '../services/users.service';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { AbstractControl, AsyncValidatorFn, FormBuilder, FormGroup, NgForm, ValidationErrors, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { firstValueFrom } from 'rxjs';
+import { Observable, firstValueFrom, of} from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarService } from '../services/snackbar.service';
 
 @Component({
   selector: 'app-register',
@@ -21,23 +22,27 @@ export class RegisterComponent {
     private http: HttpClient,
     private userService: UsersService,
     private router: Router,
-    private snackBar: MatSnackBar,
+    private snackbarService: SnackbarService
   ) {
     this.registerForm = this.formBuilder.group({
-      idrol: ['', Validators.required],
-      idtipoidentificacion: ['', Validators.required],
-      identificacion: ['', Validators.required],
-      nombre: ['', Validators.required],
-      apellido: ['', Validators.required],
-      genero: ['', Validators.required],
-      direccion: ['', Validators.required],
-      celular: ['', Validators.required],
-      telefono: ['', Validators.required],
-      sucursal: ['', Validators.required],
-      iddepartamento: ['', Validators.required],
-      idcargo: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      persona: this.formBuilder.group({
+        idtipoidentificacion: ['', Validators.required],
+        identificacion: ['', Validators.required],
+        nombre: ['', Validators.required],
+        apellido: ['', Validators.required],
+        genero: ['', Validators.required],
+        direccion: ['', Validators.required],
+        celular: ['', Validators.required],
+        telefono: ['', Validators.required],
+      }),
+      usuario: this.formBuilder.group({
+        idrol: ['', Validators.required],
+        iddepartamento: ['', Validators.required],
+        idcargo: ['', Validators.required],
+        sucursal:['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', Validators.required],
+      })
     });
   }
 
@@ -56,41 +61,49 @@ export class RegisterComponent {
   onSubmit() {
     if (this.registerForm.valid) {
 
+
       
       this.user = this.registerForm.value;
-
-      console.log(this.user);
       
-
       // Convert the user object to a JSON string
       const jsonData = JSON.stringify(this.user);
-      this.userService.create_user(jsonData);
       console.log(jsonData);
+      
 
+      this.userService.create_user(this.user).subscribe(
+        (response) => {
+          console.log('API response:', response);
+          const navigationExtras: NavigationExtras = {
+            state: { user: this.user }
+          };
+          this.router.navigate(['profile'], navigationExtras);
+        },
+        (error: any) => {
+          if (error.status === 400 && error.error) {
 
-
-      this.snackBar.open('Registration Successful!', 'Close', {
-        duration: 5000, // Set the duration for how long the pop-up should be visible (in milliseconds)
-        horizontalPosition: 'center',
-        verticalPosition: 'bottom',
-        panelClass: ['snackbar-success'],
-
-      });
+            if (error.error.persona && error.error.persona.identificacion) {
+              this.snackbarService.show(error.error.persona.identificacion[0]);
+            }
+  
+            if (error.error.usuario && error.error.usuario.email) {
+              this.snackbarService.show(error.error.usuario.email[0]);
+            }
+          } else {
+            // Handle other types of errors
+            console.error('API error:', error);
+          }
+        }
+      );
     } else {
+      this.snackbarService.show('Form is not valid. Please fill in all required fields.');
 
-      this.snackBar.open('Form is not valid. Please fill in all required fields.', 'Close', {
-        duration: 5000, // Set the duration for how long the pop-up should be visible (in milliseconds)
-        horizontalPosition: 'center',
-        verticalPosition: 'bottom',
-        panelClass: ['snackbar-error'],
-
-      });
     }
-  }
+  
+    }
 
   cancelar() {
     this.registerForm.reset();
-    this.router.navigate(['profile']);
+    this.router.navigate(['/']);
      }
 
   async get_cargos() {
@@ -222,5 +235,17 @@ export class RegisterComponent {
     }
     
   }
-
 }
+
+function showSnackBar(message: any, snackBar: MatSnackBar ){
+
+  snackBar.open(message, 'Close', {
+    duration: 5000, // Set the duration for how long the pop-up should be visible (in milliseconds)
+    horizontalPosition: 'center',
+    verticalPosition: 'bottom',
+    panelClass: ['snackbar-error'],
+
+  });
+
+  }
+

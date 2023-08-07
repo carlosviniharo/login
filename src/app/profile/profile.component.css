@@ -1,0 +1,66 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f0f2f5;
+  }
+  
+  .container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #7048e8; /* Soft purple color */
+  }
+  
+  .profile {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile h2 {
+    color: #7048e8; /* Soft purple color */
+    margin-bottom: 10px;
+  }
+  
+  .profile p {
+    color: #333; /* Neutral text color */
+    margin: 5px 0;
+  }
+  
+  /* Buttons */
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  button {
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  /* Primary button with color #7048e8 (Soft purple) */
+  .btn-primary {
+    background-color: #7048e8;
+    color: #fff;
+  }
+  
+  /* Optional: Hover effect for buttons */
+  button:hover {
+    background-color: #5d3bb3; /* A darker shade of the primary color */
+  }
+  

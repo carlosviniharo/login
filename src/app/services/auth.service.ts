@@ -12,10 +12,7 @@ import { environment } from 'src/enviroments/enviroment';
 
 export class AuthService {
 
-  
-
 constructor(private http: HttpClient, private router: Router) { }
-
 
 login(email: string, password: string): Observable<any> {
   return this.http.post(environment.apiUrl + 'users/login/', { email: email, password: password })
@@ -29,15 +26,6 @@ login(email: string, password: string): Observable<any> {
       })
     );
 }
-
-/* showLoginError() {
-  this.snackBar.open('Invalid credentials. Please try again.', 'Dismiss', {
-    duration: 5000, // Set the duration for how long the pop-up should be visible (in milliseconds)
-    horizontalPosition: 'center',
-    verticalPosition: 'top',
-    panelClass: ['error-snackbar'] // Optional: Add a CSS class for styling the error pop-up
-  });
-} */
 
 
   logout() {

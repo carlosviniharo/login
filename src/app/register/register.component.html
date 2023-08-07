@@ -1,115 +1,122 @@
 <div class="container">
     <h2>Register</h2>
     <form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
-        <!-- Tipo de usuario -->
-        <div class="form-group">
-            <label for="idrol">Rol del usuario</label>
-            <select class="form-control" id="idrol" formControlName="idrol" required>
-                <option *ngFor="let role of myDictionaryStaticTables['roles']" [value]="role.idrol">
-                    {{role.nombrerol}}
-                </option>
-            </select>
-        </div>
-        <!-- Tipo de documento -->
-        <div class="form-group">
-            <label for="idtipoidentificacion">Tipo de identificacion</label>
-            <select class="form-control" id="idtipoidentificacion" formControlName="idtipoidentificacion" required>
-                <option *ngFor="let tipoidentificacion of myDictionaryStaticTables['tipoidentificaciones']"
-                    [value]="tipoidentificacion.idtipoidentificacion">
-                    {{tipoidentificacion.descripciontipoidentificacion}}
-                </option>
-            </select>
-        </div>
+        <!-- Persona Section -->
+        <div formGroupName="persona">
+            <!-- Tipo de documento -->
+            <div class="form-group">
+                <label for="idtipoidentificacion">Tipo de identificacion</label>
+                <select class="form-control" id="idtipoidentificacion" formControlName="idtipoidentificacion" required>
+                    <option *ngFor="let tipoidentificacion of myDictionaryStaticTables['tipoidentificaciones']"
+                        [value]="tipoidentificacion.idtipoidentificacion">
+                        {{tipoidentificacion.descripciontipoidentificacion}}
+                    </option>
+                </select>
+            </div>
 
-        <!-- Numero de identificacion -->
-        <div class="form-group">
-            <label for="identificacion">Numero de identificacion</label>
-            <input type="text" class="form-control" id="identificacion" formControlName="identificacion" required>
-        </div>
+            <!-- Numero de identificacion -->
+            <div class="form-group">
+                <label for="identificacion">Numero de identificacion</label>
+                <input type="text" class="form-control" id="identificacion" formControlName="identificacion" required>
+            </div>
 
-        <!-- Nombres -->
-        <div class="form-group">
-            <label for="nombre">Nombres</label>
-            <input type="text" class="form-control" id="nombre" formControlName="nombre" required>
-        </div>
+            <!-- Nombres -->
+            <div class="form-group">
+                <label for="nombre">Nombres</label>
+                <input type="text" class="form-control" id="nombre" formControlName="nombre" required>
+            </div>
 
-        <!-- Apellidos -->
-        <div class="form-group">
-            <label for="apellido">Apellidos</label>
-            <input type="text" class="form-control" id="apellido" formControlName="apellido" required>
-        </div>
+            <!-- Apellidos -->
+            <div class="form-group">
+                <label for="apellido">Apellidos</label>
+                <input type="text" class="form-control" id="apellido" formControlName="apellido" required>
+            </div>
 
-        <!-- Genero -->
-        <div class="form-group">
-            <label for="genero">Genero</label>
-            <select class="form-control" id="genero" formControlName="genero" required>
-                <option *ngFor="let genero of myDictionaryStaticTables['generos']" [value]="genero.idgenero">
-                    {{genero.descripciongenero}}
-                </option>
-            </select>
-        </div>
+            <!-- Genero -->
+            <div class="form-group">
+                <label for="genero">Genero</label>
+                <select class="form-control" id="genero" formControlName="genero" required>
+                    <option *ngFor="let genero of myDictionaryStaticTables['generos']" [value]="genero.idgenero">
+                        {{genero.descripciongenero}}
+                    </option>
+                </select>
+            </div>
 
-        <!-- Dirección -->
-        <div class="form-group">
-            <label for="direccion">Dirección</label>
-            <input type="text" class="form-control" id="direccion" name="direccion" formControlName="direccion"
-                required>
-        </div>
+            <!-- Dirección -->
+            <div class="form-group">
+                <label for="direccion">Dirección</label>
+                <input type="text" class="form-control" id="direccion" name="direccion" formControlName="direccion"
+                    required>
+            </div>
 
-        <!-- Celular -->
-        <div class="form-group">
-            <label for="celular">Celular</label>
-            <input type="text" class="form-control" id="celular" formControlName="celular" required>
-        </div>
+            <!-- Celular -->
+            <div class="form-group">
+                <label for="celular">Celular</label>
+                <input type="text" class="form-control" id="celular" formControlName="celular" required>
+            </div>
 
-        <!-- Telefono -->
-        <div class="form-group">
-            <label for="telefono">Telefono</label>
-            <input type="text" class="form-control" id="telefono" formControlName="telefono" required>
+            <!-- Telefono -->
+            <div class="form-group">
+                <label for="telefono">Telefono</label>
+                <input type="text" class="form-control" id="telefono" formControlName="telefono" required>
+            </div>
         </div>
+        <!-- Usuario Section -->
+        <div formGroupName="usuario">
 
-        <!-- Sucursal -->
-        <div class="form-group">
-            <label for="sucursal">Sucursal</label>
-            <select type="text" class="form-control" id="sucursal" formControlName="sucursal" required>
-                <option *ngFor="let sucursal of myDictionaryStaticTables['sucursales']" [value]="sucursal.idsucursal">
-                    {{sucursal.nombresucursal}}
-                </option>
-            </select>
-<!--             <button class="button-update">Seleccionar</button> -->
-        </div>
+            <!-- Tipo de usuario -->
+            <div class="form-group">
+                <label for="idrol">Rol del usuario</label>
+                <select class="form-control" id="idrol" formControlName="idrol" required>
+                    <option *ngFor="let role of myDictionaryStaticTables['roles']" [value]="role.idrol">
+                        {{role.nombrerol}}
+                    </option>
+                </select>
+            </div>
+            <!-- Sucursal -->
+            <div class="form-group">
+                <label for="sucursal">Sucursal</label>
+                <select type="text" class="form-control" id="sucursal" formControlName="sucursal" required>
+                    <option *ngFor="let sucursal of myDictionaryStaticTables['sucursales']"
+                        [value]="sucursal.idsucursal">
+                        {{sucursal.nombresucursal}}
+                    </option>
+                </select>
+                <!--             <button class="button-update">Seleccionar</button> -->
+            </div>
 
-        <!-- Departamento -->
-        <div class="form-group">
-            <label for="iddepartamento">Departamento</label>
-            <select type="text" class="form-control" id="iddepartamento" formControlName="iddepartamento" required>
-                <option *ngFor="let departamento of myDictionaryStaticTables['departamentos']"
-                    [value]="departamento.iddepartamento">
-                    {{departamento.nombredepartamento}}
-                </option>
-            </select>
-        </div>
+            <!-- Departamento -->
+            <div class="form-group">
+                <label for="iddepartamento">Departamento</label>
+                <select type="text" class="form-control" id="iddepartamento" formControlName="iddepartamento" required>
+                    <option *ngFor="let departamento of myDictionaryStaticTables['departamentos']"
+                        [value]="departamento.iddepartamento">
+                        {{departamento.nombredepartamento}}
+                    </option>
+                </select>
+            </div>
 
-        <!-- Cargo -->
-        <div class="form-group">
-            <label for="idcargo">Cargo</label>
-            <select type="text" class="form-control" id="idcargo" formControlName="idcargo" required>
-                <option *ngFor="let cargo of myDictionaryStaticTables['cargos']" [value]="cargo.idcargo">
-                    {{cargo.descripcioncargo}}
-                </option>
-            </select>
-        </div>
+            <!-- Cargo -->
+            <div class="form-group">
+                <label for="idcargo">Cargo</label>
+                <select type="text" class="form-control" id="idcargo" formControlName="idcargo" required>
+                    <option *ngFor="let cargo of myDictionaryStaticTables['cargos']" [value]="cargo.idcargo">
+                        {{cargo.descripcioncargo}}
+                    </option>
+                </select>
+            </div>
 
-        <!-- Email -->
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" formControlName="email" required>
-        </div>
+            <!-- Email -->
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" formControlName="email" required>
+            </div>
 
-        <!-- Password -->
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" formControlName="password" required>
+            <!-- Password -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" formControlName="password" required>
+            </div>
         </div>
     </form>
     <div class="btn-group-register">
