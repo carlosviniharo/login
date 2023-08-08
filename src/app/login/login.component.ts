@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       const user = await this.get_usuario(this.email);
       
       const navigationExtras: NavigationExtras = {
-        state: { user: user }
+        state: { usuario: user }
       };
       console.log(navigationExtras);
       

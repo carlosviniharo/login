@@ -74,7 +74,7 @@ export class RegisterComponent {
         (response) => {
           console.log('API response:', response);
           const navigationExtras: NavigationExtras = {
-            state: { user: this.user }
+            state: { usuario: this.user }
           };
           this.router.navigate(['profile'], navigationExtras);
         },
