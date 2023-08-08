@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../services/users.service';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute, ActivationStart, Route, Router, RoutesRecognized } from '@angular/router';
 
-interface RouteData {
-  user: any; // Replace 'any' with the actual type of your user data
-}
 
 @Component({
   selector: 'app-profile',
@@ -14,11 +11,11 @@ interface RouteData {
 export class ProfileComponent implements OnInit {
   user: any;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private router: ActivatedRoute) { }
 
   ngOnInit(): void {
     // Use observable to handle asynchronous route data changes
-    this.user = this.route.snapshot.data as RouteData;
-    console.log('User data:', this.user);
+    this.user = history.state['usuario']
+    console.log('User data:', this.user );
   }
 }

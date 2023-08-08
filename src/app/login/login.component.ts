@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       const user = await this.get_usuario(this.email);
       
       const navigationExtras: NavigationExtras = {
-        state: { user: user }
+        state: { usuario : user }
       };
       console.log(navigationExtras);
       
@@ -51,6 +51,22 @@ export class LoginComponent implements OnInit {
       // Use firstValueFrom to get the first emitted value from the Observable
       const resp = await firstValueFrom(
         this.userService.get_usuario(email)
+      );
+      console.log('Data received:', resp);
+      return resp;
+    } catch (error) {
+      // Handle any errors that might occur during the server request
+      console.error('Error fetching data:', error);
+      return error;
+    }
+  }
+
+  async get_roles() {
+    // TODO: In case you find error in  dealys from the servers implement promises
+    try {
+      // Use firstValueFrom to get the first emitted value from the Observable
+      const resp = await firstValueFrom(
+        this.userService.get_roles()
       );
       console.log('Data received:', resp);
       return resp;
