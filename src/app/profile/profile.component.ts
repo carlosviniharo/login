@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../services/users.service';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute, ActivationStart, Route, Router, RoutesRecognized } from '@angular/router';
 
 
 @Component({
@@ -11,7 +11,7 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 export class ProfileComponent implements OnInit {
   user: any;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private router: ActivatedRoute) { }
 
   ngOnInit(): void {
     // Use observable to handle asynchronous route data changes
